@@ -1,67 +1,85 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-<title>RollAndShow</title>
+  <title>RollAndShow</title>
 </head>
 
 <body style="
-background-image:url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee');
-background-size:cover;
-background-position:center;
-color:white;
-font-family:Arial;
-margin:0;
+  margin:0;
+  font-family:Arial, sans-serif;
+  color:white;
+  background-image:url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee');
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
 ">
 
-<!-- MENU ARRIBA -->
+  <!-- MENU ARRIBA -->
+  <div style="
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    background:rgba(0,0,0,0.75);
+    padding:20px 0;
+    text-align:center;
+    z-index:1000;
+  ">
+    <b style="margin-right:30px;">ROLLANDSHOW</b>
 
-<div style="
-text-align:center;
-height:80vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-">
+    <a href="#" style="color:white; margin:15px; text-decoration:none;">Home</a>
+    <a href="#" style="color:white; margin:15px; text-decoration:none;">Photos</a>
+    <a href="#" style="color:white; margin:15px; text-decoration:none;">Videos</a>
+    <a href="#" style="color:white; margin:15px; text-decoration:none;">Social</a>
+    <a href="#" style="color:white; margin:15px; text-decoration:none;">Store</a>
+  </div>
 
-<b style="margin-right:30px">ROLLANDSHOW</b>
+  <!-- CONTENIDO CENTRAL -->
+  <div style="
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:100px 20px 20px 20px;
+    background:rgba(0,0,0,0.35);
+  ">
+    <h1 style="
+      font-size:70px;
+      letter-spacing:6px;
+      margin-bottom:10px;
+    ">
+      ROLLANDSHOW
+    </h1>
 
-<a href="#" style="color:white;margin:15px">Home</a>
-<a href="#" style="color:white;margin:15px">Photos</a>
-<a href="#" style="color:white;margin:15px">Videos</a>
-<a href="#" style="color:white;margin:15px">Social</a>
-<a href="#" style="color:white;margin:15px">Store</a>
+    <p style="
+      font-size:22px;
+      margin-top:0;
+      margin-bottom:10px;
+    ">
+      IRL Streams
+    </p>
 
-</div>
+    <p style="
+      font-size:18px;
+      margin-top:0;
+      margin-bottom:30px;
+    ">
+      WalkingShelter Project
+    </p>
 
-<hr style="border:1px solid white">
-
-<!-- CONTENIDO -->
-
-<div style="text-align:center;padding:40px">
-
-<br>
-
-<button style="
-padding:15px 30px;
-font-size:18px;
-background:black;
-color:white;
-border:2px solid white;
-cursor:pointer;
-">
-
-ENTER
-
-</button>
-
-<p>IRL Streams</p>
-
-<p>WalkingShelter Project</p>
-
-</div>
+    <button style="
+      padding:15px 30px;
+      font-size:18px;
+      background:black;
+      color:white;
+      border:2px solid white;
+      cursor:pointer;
+    ">
+      ENTER
+    </button>
+  </div>
 
 </body>
-
 </html>
