@@ -2,15 +2,20 @@
 <html>
 
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RollAndShow</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RollAndShow</title>
 
-<style>
-html {
-  scroll-behavior: smooth;
-}
-</style>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
 
+    @media (max-width:600px){
+      h1{
+        font-size:32px !important;
+      }
+    }
+  </style>
 </head>
 
 <body style="
@@ -24,7 +29,7 @@ background-repeat:no-repeat;
 background-attachment:fixed;
 ">
 
-<!-- MENU ARRIBA -->
+<!-- MENU -->
 <div style="
 position:fixed;
 top:0;
@@ -36,19 +41,17 @@ text-align:center;
 z-index:1000;
 ">
 
-<b style="margin-right:14px; font-size:clamp(12px, 2.8vw, 18px);">
-ROLLANDSHOW
-</b>
+<b style="margin-right:14px;">ROLLANDSHOW</b>
 
-<a href="#" style="color:white; margin:8px; text-decoration:none; font-size:clamp(12px, 2.5vw, 16px);">Home</a>
-<a href="#photos" style="color:white; margin:8px; text-decoration:none; font-size:clamp(12px, 2.5vw, 16px);">Photos</a>
-<a href="#" style="color:white; margin:8px; text-decoration:none; font-size:clamp(12px, 2.5vw, 16px);">Videos</a>
-<a href="#links" style="color:white; margin:8px; text-decoration:none; font-size:clamp(12px, 2.5vw, 16px);">Social</a>
-<a href="#" style="color:white; margin:8px; text-decoration:none; font-size:clamp(12px, 2.5vw, 16px);">Store</a>
+<a href="#" style="color:white; margin:8px;">Home</a>
+<a href="#photos" style="color:white; margin:8px;">Photos</a>
+<a href="#videos" style="color:white; margin:8px;">Videos</a>
+<a href="#links" style="color:white; margin:8px;">Social</a>
+<a href="#" style="color:white; margin:8px;">Store</a>
 
 </div>
 
-<!-- CONTENIDO CENTRAL -->
+<!-- HERO -->
 <div style="
 min-height:100vh;
 display:flex;
@@ -56,166 +59,110 @@ flex-direction:column;
 justify-content:center;
 align-items:center;
 text-align:center;
-padding:90px 15px 40px 15px;
+padding-top:120px;
 ">
 
 <h1 style="
-font-size:clamp(34px, 8vw, 70px);
+font-size:60px;
 letter-spacing:4px;
-margin-bottom:10px;
 text-shadow:0 0 10px rgba(0,0,0,0.6);
 ">
 ROLLANDSHOW
 </h1>
 
-<p style="
-font-size:clamp(16px, 4vw, 22px);
-margin:5px;
-text-shadow:0 0 10px rgba(0,0,0,0.6);
-">
-IRL Streams
-</p>
-
-<p style="
-font-size:clamp(14px, 3.5vw, 18px);
-margin-bottom:25px;
-text-shadow:0 0 10px rgba(0,0,0,0.6);
-">
-WalkingShelter Project
-</p>
+<p>IRL Streams</p>
+<p>WalkingShelter Project</p>
 
 <button onclick="document.getElementById('links').scrollIntoView();" style="
-padding:14px 24px;
-font-size:clamp(14px, 3.2vw, 18px);
+padding:12px 22px;
 background:transparent;
-color:white;
 border:2px solid white;
+color:white;
 cursor:pointer;
-backdrop-filter: blur(5px);
 ">
 EXPLORE JOURNEY
 </button>
 
 </div>
 
-<!-- LINKS (SIN RECTÁNGULO NEGRO) -->
-<div id="links" style="
-padding:60px 15px;
-text-align:center;
-width:100%;
-">
+<!-- CONNECT -->
+<div id="links" style="padding:60px; text-align:center;">
 
-<h2 style="
-margin-bottom:20px;
-text-shadow:0 0 10px rgba(0,0,0,0.7);
-">
-CONNECT
-</h2>
-
-<div style="
-display:flex;
-gap:16px;
-justify-content:center;
-flex-wrap:wrap;
-max-width:800px;
-margin:auto;
-">
+<h2>CONNECT</h2>
 
 <a href="https://youtube.com/@rollandshow" target="_blank" style="
-color:white;
-text-decoration:none;
 border:1px solid white;
 padding:10px 18px;
-font-size:clamp(13px, 3vw, 16px);
-backdrop-filter: blur(6px);
+margin:10px;
+display:inline-block;
+color:white;
+text-decoration:none;
 ">
 YouTube
 </a>
 
 <a href="https://www.tiktok.com/@rollandsh0w" target="_blank" style="
-color:white;
-text-decoration:none;
 border:1px solid white;
 padding:10px 18px;
-font-size:clamp(13px, 3vw, 16px);
-backdrop-filter: blur(6px);
+margin:10px;
+display:inline-block;
+color:white;
+text-decoration:none;
 ">
 TikTok
 </a>
+
 </div>
 
-  </div>
+<!-- PHOTOS -->
+<div id="photos" style="padding:80px 20px;">
 
-  <!-- GALERIA DE FOTOS -->
-  <div id="photos" style="
-  padding:80px 20px;
-  ">
+<h2 style="text-align:center;">PHOTOS</h2>
 
-    <h2 style="
-    text-align:center;
-    margin-bottom:30px;
-    font-size:28px;
-    letter-spacing:2px;
-    text-shadow:0 0 10px rgba(0,0,0,0.7);
-    ">
-      PHOTOS
-    </h2>
+<div style="
+display:grid;
+grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+gap:18px;
+max-width:1200px;
+margin:auto;
+">
 
-    <div style="
-    display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
-    gap:18px;
-    max-width:1200px;
-    margin:auto;
-    ">
+<img src="foto1.jpg" style="width:100%; height:320px; object-fit:cover; border-radius:12px;">
+<img src="foto2.jpg" style="width:100%; height:320px; object-fit:cover; border-radius:12px;">
+<img src="foto3.jpg" style="width:100%; height:320px; object-fit:cover; border-radius:12px;">
+<img src="foto4.jpg" style="width:100%; height:320px; object-fit:cover; border-radius:12px;">
+<img src="foto5.jpg" style="width:100%; height:320px; object-fit:cover; border-radius:12px;">
+<img src="foto6.jpg" style="width:100%; height:320px; object-fit:cover; border-radius:12px;">
 
-      <div style="overflow:hidden; border-radius:14px;">
-        <img src="foto1.jpg" style="width:100%; height:320px; object-fit:cover; display:block;">
-      </div>
+</div>
 
-      <div style="overflow:hidden; border-radius:14px;">
-        <img src="foto2.jpg" style="width:100%; height:320px; object-fit:cover; display:block;">
-      </div>
+</div>
 
-      <div style="overflow:hidden; border-radius:14px;">
-        <img src="foto3.jpg" style="width:100%; height:320px; object-fit:cover; display:block;">
-      </div>
-
-      <div style="overflow:hidden; border-radius:14px;">
-        <img src="foto4.jpg" style="width:100%; height:320px; object-fit:cover; display:block;">
-      </div>
-
-      <div style="overflow:hidden; border-radius:14px;">
-        <img src="foto5.jpg" style="width:100%; height:320px; object-fit:cover; display:block;">
-      </div>
-
-      <div style="overflow:hidden; border-radius:14px;">
-        <img src="foto6.jpg" style="width:100%; height:320px; object-fit:cover; display:block;">
-      </div>
-
-    </div>
-
-  </div>
+<!-- VIDEOS -->
 <div id="videos" style="padding:80px 20px; text-align:center;">
 
-<h2 style="
-margin-bottom:30px;
-font-size:28px;
-letter-spacing:2px;
-text-shadow:0 0 10px rgba(0,0,0,0.7);
-">
-VIDEOS
-</h2>
+<h2>VIDEOS</h2>
 
-<iframe 
-width="90%" 
-height="500"
-src="https://www.youtube.com/embed/N05yoK4NVsM"
-frameborder="0"
-allowfullscreen
-style="border-radius:12px; max-width:400px;">
-</iframe>
+<div style="
+display:flex;
+gap:20px;
+justify-content:center;
+flex-wrap:wrap;
+">
+
+<iframe width="320" height="570" src="https://www.youtube.com/embed/wq3L7IpXT9k" frameborder="0" allowfullscreen style="border-radius:16px;"></iframe>
+
+<iframe width="320" height="570" src="https://www.youtube.com/embed/e7Hvh6nk74A" frameborder="0" allowfullscreen style="border-radius:16px;"></iframe>
+
+<iframe width="320" height="570" src="https://www.youtube.com/embed/5X1O62l7WdI" frameborder="0" allowfullscreen style="border-radius:16px;"></iframe>
+
+<iframe width="320" height="570" src="https://www.youtube.com/embed/loTfeBmqd8Q" frameborder="0" allowfullscreen style="border-radius:16px;"></iframe>
+
+<iframe width="320" height="570" src="https://www.youtube.com/embed/N05yoK4NVsM" frameborder="0" allowfullscreen style="border-radius:16px;"></iframe>
 
 </div>
+
+</div>
+
 </body>
 </html>
