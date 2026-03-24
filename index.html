@@ -223,7 +223,64 @@
       .journey-card {
         text-align: center;
       }
-    }
+    } 
+   .journey-wrap {
+  max-width: 900px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.journey-card {
+  background: rgba(0, 0, 0, 0.55);
+  border-radius: 16px;
+  padding: 20px;
+  backdrop-filter: blur(10px);
+  text-align: left;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 0.8s ease forwards;
+}
+
+.journey-card:nth-child(1) { animation-delay: 0.05s; }
+.journey-card:nth-child(2) { animation-delay: 0.12s; }
+.journey-card:nth-child(3) { animation-delay: 0.19s; }
+.journey-card:nth-child(4) { animation-delay: 0.26s; }
+.journey-card:nth-child(5) { animation-delay: 0.33s; }
+.journey-card:nth-child(6) { animation-delay: 0.40s; }
+.journey-card:nth-child(7) { animation-delay: 0.47s; }
+.journey-card:nth-child(8) { animation-delay: 0.54s; }
+
+.journey-card h3 {
+  margin: 8px 0 6px 0;
+  font-size: 22px;
+}
+
+.journey-card p {
+  margin: 0;
+  opacity: 0.95;
+  line-height: 1.5;
+}
+
+.journey-icon {
+  font-size: 26px;
+  margin-bottom: 6px;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .journey-card {
+    text-align: center;
+  }
+}
   </style>
 </head>
 
@@ -295,61 +352,61 @@ allowfullscreen>
     </div>
   </div>
    <!-- JOURNEY -->
-  <div id="journey" class="section">
-    <h2>THE JOURNEY</h2>
+ <div id="journey" class="section">
+  <h2>THE JOURNEY</h2>
 
-    <div class="journey-wrap">
+  <div class="journey-wrap">
 
-      <div class="journey-card">
-        <div class="journey-icon">🚗</div>
-        <h3>Los Angeles</h3>
-        <p>Start — where everything began.</p>
-      </div>
-
-      <div class="journey-card">
-        <div class="journey-icon">🚗</div>
-        <h3>Las Vegas</h3>
-        <p>First stop — lights, traffic, and the real feeling that the trip had started.</p>
-      </div>
-
-      <div class="journey-card">
-        <div class="journey-icon">🚗</div>
-        <h3>Utah</h3>
-        <p>Long night — just me, the road, and the next stop.</p>
-      </div>
-
-      <div class="journey-card">
-        <div class="journey-icon">🚗</div>
-        <h3>Wyoming</h3>
-        <p>No sleep. Just focus.</p>
-      </div>
-
-      <div class="journey-card">
-        <div class="journey-icon">🚗</div>
-        <h3>Colorado</h3>
-        <p>Keep moving — mile after mile.</p>
-      </div>
-
-      <div class="journey-card">
-        <div class="journey-icon">🚗</div>
-        <h3>Kansas</h3>
-        <p>Endless road — not every mile was recorded, but every mile mattered.</p>
-      </div>
-
-      <div class="journey-card">
-        <div class="journey-icon">🚗</div>
-        <h3>Buffalo</h3>
-        <p>Almost there — close to the border, close to the goal.</p>
-      </div>
-
-      <div class="journey-card">
-        <div class="journey-icon">🚗</div>
-        <h3>Toronto</h3>
-        <p>Made it — end of the road.</p>
-      </div>
-
+    <div class="journey-card">
+      <div class="journey-icon">🚗</div>
+      <h3>Los Angeles</h3>
+      <p>Start — where everything began.</p>
     </div>
+
+    <div class="journey-card">
+      <div class="journey-icon">🚗</div>
+      <h3>Las Vegas</h3>
+      <p>First stop — lights, traffic, reality hitting.</p>
+    </div>
+
+    <div class="journey-card">
+      <div class="journey-icon">🚗</div>
+      <h3>Utah</h3>
+      <p>Long night — just me and the road.</p>
+    </div>
+
+    <div class="journey-card">
+      <div class="journey-icon">🚗</div>
+      <h3>Wyoming</h3>
+      <p>No sleep. Just focus.</p>
+    </div>
+
+    <div class="journey-card">
+      <div class="journey-icon">🚗</div>
+      <h3>Colorado</h3>
+      <p>Keep moving — mile after mile.</p>
+    </div>
+
+    <div class="journey-card">
+      <div class="journey-icon">🚗</div>
+      <h3>Kansas</h3>
+      <p>Endless road — not every mile was recorded, but every mile mattered.</p>
+    </div>
+
+    <div class="journey-card">
+      <div class="journey-icon">🚗</div>
+      <h3>Buffalo</h3>
+      <p>Almost there — close to the border, close to the goal.</p>
+    </div>
+
+    <div class="journey-card">
+      <div class="journey-icon">🚗</div>
+      <h3>Toronto</h3>
+      <p>Made it — end of the road.</p>
+    </div>
+
   </div>
+</div>
 
 </body>
 </html>
