@@ -10,232 +10,338 @@
       scroll-behavior: smooth;
     }
 
-    @media (max-width:600px){
-      h1{
-        font-size:32px !important;
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: white;
+      background-image: url('banner.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+
+    .menu {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.75);
+      padding: 12px 0;
+      text-align: center;
+      z-index: 1000;
+    }
+
+    .menu a,
+    .menu b {
+      color: white;
+      margin: 8px;
+      text-decoration: none;
+      font-size: clamp(12px, 2.5vw, 16px);
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 120px 15px 40px 15px;
+    }
+
+    .hero h1 {
+      font-size: clamp(34px, 8vw, 70px);
+      letter-spacing: 4px;
+      margin-bottom: 10px;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    }
+
+    .hero p {
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+      margin: 8px 0;
+    }
+
+    .hero button {
+      padding: 12px 22px;
+      background: transparent;
+      border: 2px solid white;
+      color: white;
+      cursor: pointer;
+      border-radius: 10px;
+      backdrop-filter: blur(5px);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+      font-size: clamp(14px, 3vw, 18px);
+      margin-top: 12px;
+    }
+
+    .section {
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    .section h2 {
+      margin-bottom: 30px;
+      font-size: 28px;
+      letter-spacing: 2px;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      border-radius: 14px;
+      display: block;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .gallery-grid img:hover {
+      transform: scale(1.04);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+    }
+
+    .video-row {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .video-row iframe {
+      width: 320px;
+      height: 570px;
+      border-radius: 16px;
+      border: none;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .video-row iframe:hover {
+      transform: scale(1.03);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .social-links a {
+      color: white;
+      text-decoration: none;
+      border: 1px solid white;
+      padding: 10px 18px;
+      font-size: clamp(13px, 3vw, 16px);
+      border-radius: 10px;
+      backdrop-filter: blur(6px);
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .social-links a:hover {
+      transform: translateY(-3px);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .journey-wrap {
+      max-width: 900px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+.journey-card {
+      background: rgba(0, 0, 0, 0.55);
+      border-radius: 16px;
+      padding: 20px;
+      backdrop-filter: blur(10px);
+      text-align: left;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeUp 0.8s ease forwards;
+    }
+
+    .journey-card:nth-child(1) { animation-delay: 0.05s; }
+    .journey-card:nth-child(2) { animation-delay: 0.12s; }
+    .journey-card:nth-child(3) { animation-delay: 0.19s; }
+    .journey-card:nth-child(4) { animation-delay: 0.26s; }
+    .journey-card:nth-child(5) { animation-delay: 0.33s; }
+    .journey-card:nth-child(6) { animation-delay: 0.40s; }
+    .journey-card:nth-child(7) { animation-delay: 0.47s; }
+    .journey-card:nth-child(8) { animation-delay: 0.54s; }
+
+    .journey-card h3 {
+      margin: 8px 0 6px 0;
+      font-size: 22px;
+    }
+
+    .journey-card p {
+      margin: 0;
+      opacity: 0.95;
+      line-height: 1.5;
+    }
+
+    .journey-icon {
+      font-size: 26px;
+      margin-bottom: 6px;
+    }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero {
+        padding-top: 110px;
+      }
+
+      .gallery-grid img {
+        height: 260px;
+      }
+
+      .video-row iframe {
+        width: 90%;
+        height: 500px;
+        max-width: 340px;
+      }
+
+      .journey-card {
+        text-align: center;
       }
     }
   </style>
 </head>
 
-<body style="
-margin:0;
-font-family:Arial, sans-serif;
-color:white;
-background-image:url('banner.png');
-background-size:cover;
-background-position:center;
-background-repeat:no-repeat;
-background-attachment:fixed;
-">
+<body>
 
-<!-- MENU -->
-<div style="
-position:fixed;
-top:0;
-left:0;
-width:100%;
-background:rgba(0,0,0,0.75);
-padding:12px 0;
-text-align:center;
-z-index:1000;
-">
+  <!-- MENU -->
+  <div class="menu">
+    <b>ROLLANDSHOW</b>
+    <a href="#">Home</a>
+    <a href="#photos">Photos</a>
+    <a href="#videos">Videos</a>
+    <a href="#links">Social</a>
+    <a href="#journey">Journey</a>
+  </div>
 
-<b style="margin-right:14px;">ROLLANDSHOW</b>
+  <!-- HERO -->
+  <div class="hero">
+    <h1>ROLLANDSHOW</h1>
+    <p style="font-size:clamp(16px, 4vw, 22px);">IRL Streams</p>
+    <p style="font-size:clamp(14px, 3.5vw, 18px);">WalkingShelter Project</p>
 
-<a href="#" style="color:white; margin:8px;">Home</a>
-<a href="#photos" style="color:white; margin:8px;">Photos</a>
-<a href="#videos" style="color:white; margin:8px;">Videos</a>
-<a href="#links" style="color:white; margin:8px;">Social</a>
-<a href="#map" style="color:white; margin:8px;">Journey</a>
+    <button onclick="document.getElementById('links').scrollIntoView();">
+      EXPLORE JOURNEY
+    </button>
+  </div>
 
-</div>
+  <!-- SOCIAL -->
+  <div id="links" class="section">
+    <h2>CONNECT</h2>
 
-<!-- HERO -->
-<div style="
-min-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-padding-top:120px;
-">
+    <div class="social-links">
+      <a href="https://youtube.com/@rollandshow" target="_blank">YouTube</a>
+      <a href="https://www.tiktok.com/@rollandsh0w" target="_blank">TikTok</a>
+    </div>
+  </div>
 
-<h1 style="
-font-size:60px;
-letter-spacing:4px;
-text-shadow:0 0 10px rgba(0,0,0,0.6);
-">
-ROLLANDSHOW
-</h1>
+  <!-- PHOTOS -->
+  <div id="photos" class="section">
+    <h2>PHOTOS</h2>
 
-<p>IRL Streams</p>
-<p>WalkingShelter Project</p>
+    <div class="gallery-grid">
+      <img src="foto1.jpg" alt="Photo 1">
+      <img src="foto2.jpg" alt="Photo 2">
+      <img src="foto3.jpg" alt="Photo 3">
+      <img src="foto4.jpg" alt="Photo 4">
+      <img src="foto5.jpg" alt="Photo 5">
+      <img src="foto6.jpg" alt="Photo 6">
+    </div>
+  </div>
 
-<button onclick="document.getElementById('links').scrollIntoView();" style="
-padding:12px 22px;
-background:transparent;
-border:2px solid white;
-color:white;
-cursor:pointer;
-">
-EXPLORE JOURNEY
-</button>
+  <!-- VIDEOS -->
+  <div id="videos" class="section">
+    <h2>VIDEOS</h2>
 
-</div>
+    <div class="video-row">
+      <iframe src="https://www.youtube.com/embed/wq3L7IpXT9k" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/e7Hvh6nk74A" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/5X1O62l7WdI" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/loTfeBmqd8Q" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/N05yoK4NVsM" allowfullscreen></iframe>
+    </div>
+  </div>
+   <!-- JOURNEY -->
+  <div id="journey" class="section">
+    <h2>THE JOURNEY</h2>
 
-<!-- CONNECT -->
-<div id="links" style="padding:60px; text-align:center;">
+    <div class="journey-wrap">
 
-<h2>CONNECT</h2>
+      <div class="journey-card">
+        <div class="journey-icon">🚗</div>
+        <h3>Los Angeles</h3>
+        <p>Start — where everything began.</p>
+      </div>
 
-<a href="https://youtube.com/@rollandshow" target="_blank" style="
-border:1px solid white;
-padding:10px 18px;
-margin:10px;
-display:inline-block;
-color:white;
-text-decoration:none;
-">
-YouTube
-</a>
+      <div class="journey-card">
+        <div class="journey-icon">🚗</div>
+        <h3>Las Vegas</h3>
+        <p>First stop — lights, traffic, and the real feeling that the trip had started.</p>
+      </div>
 
-<a href="https://www.tiktok.com/@rollandsh0w" target="_blank" style="
-border:1px solid white;
-padding:10px 18px;
-margin:10px;
-display:inline-block;
-color:white;
-text-decoration:none;
-">
-TikTok
-</a>
+      <div class="journey-card">
+        <div class="journey-icon">🚗</div>
+        <h3>Utah</h3>
+        <p>Long night — just me, the road, and the next stop.</p>
+      </div>
 
-</div>
+      <div class="journey-card">
+        <div class="journey-icon">🚗</div>
+        <h3>Wyoming</h3>
+        <p>No sleep. Just focus.</p>
+      </div>
 
-<!-- PHOTOS -->
-<div id="photos" style="padding:80px 20px;">
+      <div class="journey-card">
+        <div class="journey-icon">🚗</div>
+        <h3>Colorado</h3>
+        <p>Keep moving — mile after mile.</p>
+      </div>
 
-<h2 style="text-align:center;">PHOTOS</h2>
+      <div class="journey-card">
+        <div class="journey-icon">🚗</div>
+        <h3>Kansas</h3>
+        <p>Endless road — not every mile was recorded, but every mile mattered.</p>
+      </div>
 
-<div style="
-display:grid;
-grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
-gap:18px;
-max-width:1200px;
-margin:auto;
-">
+      <div class="journey-card">
+        <div class="journey-icon">🚗</div>
+        <h3>Buffalo</h3>
+        <p>Almost there — close to the border, close to the goal.</p>
+      </div>
 
-<img src="foto1.jpg" style="width:100%; height:320px; object-fit:cover; border-radius:12px;">
-<img src="foto2.jpg" style="width:100%; height:320px; object-fit:cover; border-radius:12px;">
-<img src="foto3.jpg" style="width:100%; height:320px; object-fit:cover; border-radius:12px;">
-<img src="foto4.jpg" style="width:100%; height:320px; object-fit:cover; border-radius:12px;">
-<img src="foto5.jpg" style="width:100%; height:320px; object-fit:cover; border-radius:12px;">
-<img src="foto6.jpg" style="width:100%; height:320px; object-fit:cover; border-radius:12px;">
+      <div class="journey-card">
+        <div class="journey-icon">🚗</div>
+        <h3>Toronto</h3>
+        <p>Made it — end of the road.</p>
+      </div>
 
-</div>
+    </div>
+  </div>
 
-</div>
-
-<!-- VIDEOS -->
-<div id="videos" style="padding:80px 20px; text-align:center;">
-
-<h2>VIDEOS</h2>
-
-<div style="
-display:flex;
-gap:20px;
-justify-content:center;
-flex-wrap:wrap;
-">
-
-<iframe width="320" height="570" src="https://www.youtube.com/embed/wq3L7IpXT9k" frameborder="0" allowfullscreen style="border-radius:16px;"></iframe>
-
-<iframe width="320" height="570" src="https://www.youtube.com/embed/e7Hvh6nk74A" frameborder="0" allowfullscreen style="border-radius:16px;"></iframe>
-
-<iframe width="320" height="570" src="https://www.youtube.com/embed/5X1O62l7WdI" frameborder="0" allowfullscreen style="border-radius:16px;"></iframe>
-
-<iframe width="320" height="570" src="https://www.youtube.com/embed/loTfeBmqd8Q" frameborder="0" allowfullscreen style="border-radius:16px;"></iframe>
-
-<iframe width="320" height="570" src="https://www.youtube.com/embed/N05yoK4NVsM" frameborder="0" allowfullscreen style="border-radius:16px;"></iframe>
-
-</div>
-
-</div>
-<div id="map" style="padding:80px 20px; text-align:center;">
-
-<h2 style="
-margin-bottom:30px;
-font-size:28px;
-letter-spacing:2px;
-text-shadow:0 0 10px rgba(0,0,0,0.7);
-">
-<div id="journey" style="padding:80px 20px; text-align:center;">
-
-<h2 style="margin-bottom:40px; letter-spacing:2px;">
-<div id="journey" style="padding:80px 20px;">
-
-<h2 style="
-text-align:center;
-margin-bottom:50px;
-letter-spacing:3px;
-font-size:32px;
-">
-THE JOURNEY
-</h2>
-
-<div style="
-max-width:900px;
-margin:auto;
-display:flex;
-flex-direction:column;
-gap:30px;
-">
-
-<!-- CARD -->
-<div style="
-background:rgba(0,0,0,0.6);
-padding:20px;
-border-radius:15px;
-backdrop-filter:blur(10px);
-">
-
-<div style="font-size:25px;">🚗</div>
-<h3>Los Angeles</h3>
-<p>Start — The journey begins</p>
-
-</div>
-
-<!-- CARD -->
-<div style="
-background:rgba(0,0,0,0.6);
-padding:20px;
-border-radius:15px;
-backdrop-filter:blur(10px);
-">
-
-<div style="font-size:25px;">🚗</div>
-<h3>Las Vegas</h3>
-<p>First stop — Lights and reality hit</p>
-
-</div>
-
-<!-- CARD -->
-<div style="
-background:rgba(0,0,0,0.6);
-padding:20px;
-border-radius:15px;
-backdrop-filter:blur(10px);
-">
-
-<div style="font-size:25px;">🚗</div>
-<h3>Utah</h3>
-<p>Long night — Just driving</p>
-
-</div>
-
-</div>
-</div>
 </body>
 </html>
