@@ -1,134 +1,151 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>RollAndShow</title>
+
+<style>
+html {
+  scroll-behavior: smooth;
+}
+</style>
+
 </head>
 
 <body style="
 margin:0;
 font-family:Arial, sans-serif;
 color:white;
-background-image:url('banner.png');
+background-image:url('banner.jpg');
 background-size:cover;
 background-position:center;
 background-repeat:no-repeat;
 background-attachment:fixed;
 ">
 
-  <!-- MENU ARRIBA -->
-  <div style="
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    background:rgba(0,0,0,0.75);
-    padding:20px 0;
-    text-align:center;
-    z-index:1000;
-  ">
-    <b style="margin-right:30px;">ROLLANDSHOW</b>
-
-    <a href="#" style="color:white; margin:15px; text-decoration:none;">Home</a>
-    <a href="#" style="color:white; margin:15px; text-decoration:none;">Photos</a>
-    <a href="#" style="color:white; margin:15px; text-decoration:none;">Videos</a>
-    <a href="#" style="color:white; margin:15px; text-decoration:none;">Social</a>
-    <a href="#" style="color:white; margin:15px; text-decoration:none;">Store</a>
-  </div>
-
-  <!-- CONTENIDO CENTRAL -->
-  <div style="
-    min-height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    padding:100px 20px 20px 20px;
-    background:rgba(0,0,0,0.35);
-  ">
-    <h1 style="
-      font-size:70px;
-      letter-spacing:6px;
-      margin-bottom:10px;
-    ">
-      ROLLANDSHOW
-    </h1>
-
-    <p style="
-      font-size:22px;
-      margin-top:0;
-      margin-bottom:10px;
-    ">
-      IRL Streams
-    </p>
-
-    <p style="
-      font-size:18px;
-      margin-top:0;
-      margin-bottom:30px;
-    ">
-      WalkingShelter Project
-    </p>
-
-  <a href="#links">
-  <button style="
-    padding:15px 30px;
-    font-size:18px;
-    background:black;
-    color:white;
-    border:2px solid white;
-    cursor:pointer;
-  ">
-    EXPLORE JOURNEY
-  </button>
-</a>
-<br><br>
-
-<div>
-
-<a href="https://youtube.com/@rollandshow" target="_blank" style="color:white; margin:10px;">YouTube</a>
-
-<a href="https://www.tiktok.com/@rollandsh0w" target="_blank" style="color:white; margin:10px;">TikTok</a>
-
-<a href="#" target="_blank" style="color:white; margin:10px;">Instagram</a>
-
-</div>
- 
-<div style="padding:40px">
-
-<h2>IRL Streams</h2>
-
-
-  </div>
-<br><br><br>
-
-<div id="links" style="
-  padding:120px 20px;
-  text-align:center;
-  background:rgba(0,0,0,0.75);
-  width:100%;
+<!-- MENU ARRIBA -->
+<div style="
+position:fixed;
+top:0;
+left:0;
+width:100%;
+background:rgba(0,0,0,0.75);
+padding:12px 0;
+text-align:center;
+z-index:1000;
 ">
 
-<h2 style="letter-spacing:3px;">CONNECT</h2>
+<b style="margin-right:14px; font-size:clamp(12px, 2.8vw, 18px);">
+ROLLANDSHOW
+</b>
 
-<br>
+<a href="#" style="color:white; margin:8px; text-decoration:none; font-size:clamp(12px, 2.5vw, 16px);">Home</a>
+<a href="#" style="color:white; margin:8px; text-decoration:none; font-size:clamp(12px, 2.5vw, 16px);">Photos</a>
+<a href="#" style="color:white; margin:8px; text-decoration:none; font-size:clamp(12px, 2.5vw, 16px);">Videos</a>
+<a href="#links" style="color:white; margin:8px; text-decoration:none; font-size:clamp(12px, 2.5vw, 16px);">Social</a>
+<a href="#" style="color:white; margin:8px; text-decoration:none; font-size:clamp(12px, 2.5vw, 16px);">Store</a>
+
+</div>
+
+<!-- CONTENIDO CENTRAL -->
+<div style="
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:90px 15px 40px 15px;
+">
+
+<h1 style="
+font-size:clamp(34px, 8vw, 70px);
+letter-spacing:4px;
+margin-bottom:10px;
+text-shadow:0 0 10px rgba(0,0,0,0.6);
+">
+ROLLANDSHOW
+</h1>
+
+<p style="
+font-size:clamp(16px, 4vw, 22px);
+margin:5px;
+text-shadow:0 0 10px rgba(0,0,0,0.6);
+">
+IRL Streams
+</p>
+
+<p style="
+font-size:clamp(14px, 3.5vw, 18px);
+margin-bottom:25px;
+text-shadow:0 0 10px rgba(0,0,0,0.6);
+">
+WalkingShelter Project
+</p>
+
+<button onclick="document.getElementById('links').scrollIntoView();" style="
+padding:14px 24px;
+font-size:clamp(14px, 3.2vw, 18px);
+background:transparent;
+color:white;
+border:2px solid white;
+cursor:pointer;
+backdrop-filter: blur(5px);
+">
+EXPLORE JOURNEY
+</button>
+
+</div>
+
+<!-- LINKS (SIN RECTÁNGULO NEGRO) -->
+<div id="links" style="
+padding:60px 15px;
+text-align:center;
+width:100%;
+">
+
+<h2 style="
+margin-bottom:20px;
+text-shadow:0 0 10px rgba(0,0,0,0.7);
+">
+CONNECT
+</h2>
 
 <div style="
-  display:flex;
-  gap:30px;
-  justify-content:center;
-  flex-wrap:wrap;
-  max-width:800px;
-  margin:auto;
+display:flex;
+gap:16px;
+justify-content:center;
+flex-wrap:wrap;
+max-width:800px;
+margin:auto;
 ">
 
-<a href="https://youtube.com/@rollandshow" target="_blank" style="color:white; text-decoration:none;">YouTube</a>
+<a href="https://youtube.com/@rollandshow" target="_blank" style="
+color:white;
+text-decoration:none;
+border:1px solid white;
+padding:10px 18px;
+font-size:clamp(13px, 3vw, 16px);
+backdrop-filter: blur(6px);
+">
+YouTube
+</a>
 
-<a href="https://www.tiktok.com/@rollandsh0w" target="_blank" style="color:white; text-decoration:none;">TikTok</a>
+<a href="https://www.tiktok.com/@rollandsh0w" target="_blank" style="
+color:white;
+text-decoration:none;
+border:1px solid white;
+padding:10px 18px;
+font-size:clamp(13px, 3vw, 16px);
+backdrop-filter: blur(6px);
+">
+TikTok
+</a>
 
 </div>
 
 </div>
+
 </body>
 </html>
