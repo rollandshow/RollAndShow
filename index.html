@@ -403,9 +403,19 @@
 
     @media (max-width: 768px) {
       body {
-        background-attachment: scroll;
-        background-position: center top;
-      }
+  background-image:
+    linear-gradient(
+      rgba(0, 0, 0, 0.20),
+      rgba(0, 0, 0, 0.35)
+    ),
+    url("banner-mobile.png");
+
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+}
+
 
       .menu {
         min-height: 68px;
@@ -481,9 +491,11 @@
       }
 
       .hero h1 {
-        font-size: clamp(36px, 11vw, 54px);
-        letter-spacing: 2px;
-      }
+  font-size: clamp(30px, 9vw, 46px);
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
 
       .hero-button {
         width: min(320px, 90%);
