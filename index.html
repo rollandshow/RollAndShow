@@ -231,10 +231,20 @@
        FOTOS
     ========================== */
 
-   .gallery-grid{
+  .gallery-grid{
+    display:grid;
     grid-template-columns:repeat(2,1fr);
-    gap:14px;
+    gap:18px;
+    justify-items:center;
 }
+
+.gallery-grid img{
+    width:180px;
+    height:180px;
+    object-fit:cover;
+    border-radius:18px;
+}
+
 
 .gallery-item{
     max-width:170px;
@@ -274,36 +284,25 @@
        VIDEOS
     ========================== */
 
-    .video-row {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: flex-start;
-      gap: 22px;
-
-      width: min(1200px, 100%);
-      margin: 0 auto;
-    }
-
-    .video-row iframe {
-    width: 170px;
-    height: 300px;
-
-    border: none;
-    border-radius: 15px;
-
-    background: black;
-    box-shadow: 0 15px 35px rgba(0,0,0,.35);
-
-    transition:
-        transform .35s ease,
-        box-shadow .35s ease;
+   .video-row{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+    justify-items:center;
 }
 
-    .video-row iframe:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 22px 45px rgba(0, 0, 0, 0.5);
-    }
+.video-row iframe{
+    width:180px;
+    height:320px;
+    border:none;
+    border-radius:18px;
+}
+
+.video-row iframe:hover{
+    transform:translateY(-5px);
+    box-shadow:0 22px 45px rgba(0,0,0,.5);
+}
+
 
     /* =========================
        REDES SOCIALES
