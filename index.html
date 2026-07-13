@@ -1,411 +1,807 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  >
+
   <title>RollAndShow</title>
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     html {
       scroll-behavior: smooth;
+      scroll-padding-top: 80px;
     }
 
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+      font-family: Arial, Helvetica, sans-serif;
       color: white;
-      background-image: url('banner.png');
+
+      background-image:
+        linear-gradient(
+          rgba(0, 0, 0, 0.15),
+          rgba(0, 0, 0, 0.25)
+        ),
+        url("banner.png");
+
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
       background-attachment: fixed;
+      background-color: #07111f;
     }
+
+    /* =========================
+       MENÚ
+    ========================== */
 
     .menu {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      background: rgba(0, 0, 0, 0.75);
-      padding: 12px 0;
-      text-align: center;
+      min-height: 62px;
       z-index: 1000;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+
+      padding: 12px 20px;
+      background: rgba(0, 0, 0, 0.78);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
     }
 
-    .menu a,
-    .menu b {
+    .logo {
       color: white;
-      margin: 8px;
+      font-size: 17px;
+      font-weight: bold;
       text-decoration: none;
-      font-size: clamp(12px, 2.5vw, 16px);
+      white-space: nowrap;
     }
+
+    .menu-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 22px;
+    }
+
+    .menu-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      transition:
+        opacity 0.25s ease,
+        transform 0.25s ease;
+    }
+
+    .menu-links a:hover {
+      opacity: 0.75;
+      transform: translateY(-2px);
+    }
+
+    .menu-button {
+      display: none;
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.08);
+      color: white;
+      cursor: pointer;
+    }
+
+    .menu-button span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      margin: 5px auto;
+      border-radius: 5px;
+      background: white;
+      transition:
+        transform 0.3s ease,
+        opacity 0.3s ease;
+    }
+
+    .menu-button.active span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .menu-button.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-button.active span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* =========================
+       HERO
+    ========================== */
 
     .hero {
       min-height: 100vh;
+      min-height: 100svh;
+
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
+
+      padding: 110px 20px 50px;
       text-align: center;
-      padding: 120px 15px 40px 15px;
+    }
+
+    .hero-content {
+      width: min(900px, 100%);
+      padding: 30px 20px;
     }
 
     .hero h1 {
-      font-size: clamp(34px, 8vw, 70px);
-      letter-spacing: 4px;
-      margin-bottom: 10px;
-      text-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+      margin: 0 0 12px;
+
+      font-size: clamp(40px, 7vw, 72px);
+      line-height: 1;
+      letter-spacing: 5px;
+
+      overflow-wrap: anywhere;
+      text-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.75),
+        0 0 30px rgba(0, 0, 0, 0.35);
     }
 
     .hero p {
-      text-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
-      margin: 8px 0;
+      margin: 10px 0;
+      text-shadow: 0 3px 12px rgba(0, 0, 0, 0.9);
     }
 
-    .hero button {
-      padding: 12px 22px;
-      background: transparent;
-      border: 2px solid white;
-      color: white;
-      cursor: pointer;
-      border-radius: 10px;
-      backdrop-filter: blur(5px);
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-      font-size: clamp(14px, 3vw, 18px);
-      margin-top: 12px;
+    .hero-subtitle {
+      font-size: clamp(18px, 3vw, 24px);
     }
+
+    .hero-project {
+      font-size: clamp(15px, 2.5vw, 19px);
+    }
+
+    .hero-button {
+      display: inline-block;
+      margin-top: 22px;
+      padding: 14px 26px;
+
+      border: 2px solid white;
+      border-radius: 12px;
+
+      color: white;
+      background: rgba(0, 0, 0, 0.15);
+      text-decoration: none;
+      font-size: clamp(14px, 2vw, 18px);
+
+      cursor: pointer;
+
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.18);
+
+      transition:
+        background 0.3s ease,
+        transform 0.3s ease;
+    }
+
+    .hero-button:hover {
+      background: rgba(255, 255, 255, 0.15);
+      transform: translateY(-3px);
+    }
+
+    /* =========================
+       SECCIONES
+    ========================== */
 
     .section {
-      padding: 80px 20px;
+      width: 100%;
+      padding: 90px 20px;
       text-align: center;
     }
 
     .section h2 {
-      margin-bottom: 30px;
-      font-size: 28px;
-      letter-spacing: 2px;
-      text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+      margin: 0 0 35px;
+
+      font-size: clamp(30px, 5vw, 44px);
+      letter-spacing: 4px;
+
+      text-shadow: 0 4px 14px rgba(0, 0, 0, 0.85);
     }
+
+    /* =========================
+       FOTOS
+    ========================== */
 
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(
+        auto-fit,
+        minmax(220px, 1fr)
+      );
+
       gap: 18px;
-      max-width: 1200px;
-      margin: auto;
+      width: min(1200px, 100%);
+      margin: 0 auto;
     }
 
-    .gallery-grid img {
+    .gallery-item {
+      overflow: hidden;
+      border-radius: 16px;
+      background: rgba(0, 0, 0, 0.3);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .gallery-item img {
+      display: block;
       width: 100%;
       height: 320px;
       object-fit: cover;
-      border-radius: 14px;
-      display: block;
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
+
+      transition:
+        transform 0.4s ease,
+        filter 0.4s ease;
     }
 
-    .gallery-grid img:hover {
-      transform: scale(1.04);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+    .gallery-item:hover img {
+      transform: scale(1.045);
+      filter: brightness(1.05);
     }
+
+    /* =========================
+       VIDEOS
+    ========================== */
 
     .video-row {
       display: flex;
-      gap: 20px;
-      justify-content: center;
       flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 22px;
+
+      width: min(1200px, 100%);
+      margin: 0 auto;
     }
 
     .video-row iframe {
       width: 320px;
+      max-width: 100%;
       height: 570px;
-      border-radius: 16px;
+
       border: none;
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      border-radius: 18px;
+
+      background: black;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+
+      transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
     }
 
     .video-row iframe:hover {
-      transform: scale(1.03);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      transform: translateY(-5px);
+      box-shadow: 0 22px 45px rgba(0, 0, 0, 0.5);
     }
+
+    /* =========================
+       REDES SOCIALES
+    ========================== */
 
     .social-links {
       display: flex;
-      gap: 16px;
-      justify-content: center;
       flex-wrap: wrap;
-      max-width: 800px;
-      margin: auto;
+      justify-content: center;
+      gap: 16px;
+
+      width: min(800px, 100%);
+      margin: 0 auto;
     }
 
     .social-links a {
-      color: white;
-      text-decoration: none;
+      min-width: 140px;
+      padding: 13px 22px;
+
       border: 1px solid white;
-      padding: 10px 18px;
-      font-size: clamp(13px, 3vw, 16px);
-      border-radius: 10px;
-      backdrop-filter: blur(6px);
-      transition: transform 0.3s ease, background 0.3s ease;
+      border-radius: 12px;
+
+      color: white;
+      background: rgba(0, 0, 0, 0.25);
+      text-decoration: none;
+      font-size: 16px;
+
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+
+      transition:
+        transform 0.3s ease,
+        background 0.3s ease;
     }
 
     .social-links a:hover {
-      transform: translateY(-3px);
-      background: rgba(255, 255, 255, 0.08);
+      transform: translateY(-4px);
+      background: rgba(255, 255, 255, 0.15);
     }
+
+    /* =========================
+       JOURNEY
+    ========================== */
 
     .journey-wrap {
-      max-width: 900px;
-      margin: auto;
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      grid-template-columns: repeat(
+        auto-fit,
+        minmax(250px, 1fr)
+      );
+
       gap: 22px;
-    }
-.journey-card {
-      background: rgba(0, 0, 0, 0.55);
-      border-radius: 16px;
-      padding: 20px;
-      backdrop-filter: blur(10px);
-      text-align: left;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
-      opacity: 0;
-      transform: translateY(30px);
-      animation: fadeUp 0.8s ease forwards;
+      width: min(1000px, 100%);
+      margin: 0 auto;
     }
 
-    .journey-card:nth-child(1) { animation-delay: 0.05s; }
-    .journey-card:nth-child(2) { animation-delay: 0.12s; }
-    .journey-card:nth-child(3) { animation-delay: 0.19s; }
-    .journey-card:nth-child(4) { animation-delay: 0.26s; }
-    .journey-card:nth-child(5) { animation-delay: 0.33s; }
-    .journey-card:nth-child(6) { animation-delay: 0.40s; }
-    .journey-card:nth-child(7) { animation-delay: 0.47s; }
-    .journey-card:nth-child(8) { animation-delay: 0.54s; }
+    .journey-card {
+      padding: 24px;
+
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 18px;
+
+      background: rgba(0, 0, 0, 0.55);
+      text-align: left;
+
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+
+      transition:
+        transform 0.3s ease,
+        background 0.3s ease;
+    }
+
+    .journey-card:hover {
+      transform: translateY(-5px);
+      background: rgba(0, 0, 0, 0.68);
+    }
+
+    .journey-icon {
+      margin-bottom: 8px;
+      font-size: 30px;
+    }
 
     .journey-card h3 {
-      margin: 8px 0 6px 0;
+      margin: 8px 0;
       font-size: 22px;
     }
 
     .journey-card p {
       margin: 0;
-      opacity: 0.95;
-      line-height: 1.5;
+      line-height: 1.55;
+      opacity: 0.92;
     }
 
-    .journey-icon {
-      font-size: 26px;
-      margin-bottom: 6px;
-    }
+    /* =========================
+       CELULARES
+    ========================== */
 
-    @keyframes fadeUp {
-      to {
+    @media (max-width: 768px) {
+      body {
+        background-attachment: scroll;
+        background-position: center top;
+      }
+
+      .menu {
+        min-height: 68px;
+        justify-content: space-between;
+        padding:
+          12px
+          max(18px, env(safe-area-inset-right))
+          12px
+          max(18px, env(safe-area-inset-left));
+      }
+
+      .logo {
+        font-size: 18px;
+      }
+
+      .menu-button {
+        display: block;
+      }
+
+      .menu-links {
+        position: absolute;
+        top: 68px;
+        left: 0;
+
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+
+        background: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+
+        opacity: 0;
+        pointer-events: none;
+
+        transition:
+          max-height 0.35s ease,
+          opacity 0.25s ease;
+      }
+
+      .menu-links.open {
+        max-height: 350px;
         opacity: 1;
-        transform: translateY(0);
+        pointer-events: auto;
       }
-    }
 
-    @media (max-width: 600px) {
+      .menu-links a {
+        display: block;
+        width: 100%;
+        padding: 17px 20px;
+
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+        font-size: 17px;
+        text-align: center;
+      }
+
       .hero {
-        padding-top: 110px;
+        min-height: 100svh;
+        padding:
+          100px
+          16px
+          max(40px, env(safe-area-inset-bottom));
       }
 
-      .gallery-grid img {
-        height: 260px;
+      .hero-content {
+        padding: 20px 5px;
+      }
+
+      .hero h1 {
+        font-size: clamp(36px, 11vw, 54px);
+        letter-spacing: 2px;
+      }
+
+      .hero-button {
+        width: min(320px, 90%);
+        padding: 15px 18px;
+      }
+
+      .section {
+        padding: 75px 16px;
+      }
+
+      .section h2 {
+        margin-bottom: 28px;
+        font-size: 34px;
+        letter-spacing: 3px;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 22px;
+      }
+
+      .gallery-item img {
+        height: auto;
+        max-height: 520px;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+      }
+
+      .video-row {
+        flex-direction: column;
+        align-items: center;
       }
 
       .video-row iframe {
-        width: 90%;
-        height: 500px;
-        max-width: 340px;
+        width: min(340px, 100%);
+        height: min(600px, 150vw);
+      }
+
+      .social-links {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .social-links a {
+        width: min(320px, 100%);
+      }
+
+      .journey-wrap {
+        grid-template-columns: 1fr;
       }
 
       .journey-card {
         text-align: center;
       }
-    } 
-   .journey-wrap {
-  max-width: 900px;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 22px;
-}
+    }
 
-.journey-card {
-  background: rgba(0, 0, 0, 0.55);
-  border-radius: 16px;
-  padding: 20px;
-  backdrop-filter: blur(10px);
-  text-align: left;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeUp 0.8s ease forwards;
-}
+    /* Teléfonos pequeños */
 
-.journey-card:nth-child(1) { animation-delay: 0.05s; }
-.journey-card:nth-child(2) { animation-delay: 0.12s; }
-.journey-card:nth-child(3) { animation-delay: 0.19s; }
-.journey-card:nth-child(4) { animation-delay: 0.26s; }
-.journey-card:nth-child(5) { animation-delay: 0.33s; }
-.journey-card:nth-child(6) { animation-delay: 0.40s; }
-.journey-card:nth-child(7) { animation-delay: 0.47s; }
-.journey-card:nth-child(8) { animation-delay: 0.54s; }
+    @media (max-width: 390px) {
+      .logo {
+        font-size: 16px;
+      }
 
-.journey-card h3 {
-  margin: 8px 0 6px 0;
-  font-size: 22px;
-}
+      .hero h1 {
+        font-size: 34px;
+        letter-spacing: 1px;
+      }
 
-.journey-card p {
-  margin: 0;
-  opacity: 0.95;
-  line-height: 1.5;
-}
+      .hero-subtitle {
+        font-size: 19px;
+      }
 
-.journey-icon {
-  font-size: 26px;
-  margin-bottom: 6px;
-}
+      .hero-project {
+        font-size: 16px;
+      }
 
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+      .section {
+        padding-left: 12px;
+        padding-right: 12px;
+      }
+    }
 
-@media (max-width: 600px) {
-  .journey-card {
-    text-align: center;
-  }
-} </div>
+    /* Reduce animaciones si el teléfono lo solicita */
 
-  </div>
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
 
-  <!-- GALERIA DE FOTOS -->
-  <div id="photos" style="
-  padding:80px 20px;
-  ">
-
-    <h2 style="
-    text-align:center;
-    margin-bottom:30px;
-    font-size:28px;
-    letter-spacing:2px;
-    text-shadow:0 0 10px rgba(0,0,0,0.7);
-    ">
-      PHOTOS
-    </h2>
-
-    <div style="
-    display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
-    gap:18px;
-    max-width:1200px;
-    margin:auto;
-    ">
-
-      <div style="overflow:hidden; border-radius:14px;">
-        <img src="foto1.jpg" style="width:100%; height:320px; object-fit:cover; display:block;">
-      </div>
-
-      <div style="overflow:hidden; border-radius:14px;">
-        <img src="foto2.jpg" style="width:100%; height:320px; object-fit:cover; display:block;">
-      </div>
-
-      <div style="overflow:hidden; border-radius:14px;">
-        <img src="foto3.jpg" style="width:100%; height:320px; object-fit:cover; display:block;">
-      </div>
-
-      <div style="overflow:hidden; border-radius:14px;">
-        <img src="foto4.jpg" style="width:100%; height:320px; object-fit:cover; display:block;">
-      </div>
-
-      <div style="overflow:hidden; border-radius:14px;">
-        <img src="foto5.jpg" style="width:100%; height:320px; object-fit:cover; display:block;">
-      </div>
-
-      <div style="overflow:hidden; border-radius:14px;">
-        <img src="foto6.jpg" style="width:100%; height:320px; object-fit:cover; display:block;">
-      </div>
-
-    </div>
-
-  </div>
-
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
   </style>
 </head>
 
 <body>
 
-  <!-- MENU -->
-  <div class="menu">
-    <b>ROLLANDSHOW</b>
-    <a href="#">Home</a>
-    <a href="#photos">Photos</a>
-    <a href="#videos">Videos</a>
-    <a href="#links">Social</a>
-    <a href="#journey">Journey</a>
-  </div>
+  <!-- MENÚ -->
 
-  <!-- HERO -->
-  <div class="hero">
-    <h1>ROLLANDSHOW</h1>
-    <p style="font-size:clamp(16px, 4vw, 22px);">IRL Streams</p>
-    <p style="font-size:clamp(14px, 3.5vw, 18px);">WalkingShelter Project</p>
+  <nav class="menu">
+    <a href="#home" class="logo">ROLLANDSHOW</a>
 
-    <button onclick="document.getElementById('links').scrollIntoView();">
-      EXPLORE JOURNEY
+    <button
+      class="menu-button"
+      id="menuButton"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      type="button"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
     </button>
-  </div>
 
-  <!-- SOCIAL -->
-  <div id="links" class="section">
-    <h2>CONNECT</h2>
-
-    <div class="social-links">
-      <a href="https://youtube.com/@rollandshow" target="_blank">YouTube</a>
-      <a href="https://www.tiktok.com/@rollandsh0w" target="_blank">TikTok</a>
+    <div class="menu-links" id="menuLinks">
+      <a href="#home">Home</a>
+      <a href="#photos">Photos</a>
+      <a href="#videos">Videos</a>
+      <a href="#links">Social</a>
+      <a href="#journey">Journey</a>
     </div>
-  </div>
+  </nav>
 
-  <!-- PHOTOS -->
-  <div id="photos" class="section">
+  <!-- INICIO -->
+
+  <header class="hero" id="home">
+    <div class="hero-content">
+      <h1>ROLLANDSHOW</h1>
+
+      <p class="hero-subtitle">
+        IRL Streams
+      </p>
+
+      <p class="hero-project">
+        WalkingShelter Project
+      </p>
+
+      <a href="#journey" class="hero-button">
+        EXPLORE JOURNEY
+      </a>
+    </div>
+  </header>
+
+  <!-- FOTOS -->
+
+  <section id="photos" class="section">
     <h2>PHOTOS</h2>
 
     <div class="gallery-grid">
-      <img src="foto1.jpg" alt="Photo 1">
-      <img src="foto2.jpg" alt="Photo 2">
-      <img src="foto3.jpg" alt="Photo 3">
-      <img src="foto4.jpg" alt="Photo 4">
-      <img src="foto5.jpg" alt="Photo 5">
-      <img src="foto6.jpg" alt="Photo 6">
+
+      <div class="gallery-item">
+        <img src="foto1.jpg" alt="Black Dodge Charger photo 1">
+      </div>
+
+      <div class="gallery-item">
+        <img src="foto2.jpg" alt="Black Dodge Charger photo 2">
+      </div>
+
+      <div class="gallery-item">
+        <img src="foto3.jpg" alt="Black Dodge Charger photo 3">
+      </div>
+
+      <div class="gallery-item">
+        <img src="foto4.jpg" alt="Black Dodge Charger photo 4">
+      </div>
+
+      <div class="gallery-item">
+        <img src="foto5.jpg" alt="Black Dodge Charger photo 5">
+      </div>
+
+      <div class="gallery-item">
+        <img src="foto6.jpg" alt="Black Dodge Charger photo 6">
+      </div>
+
     </div>
-  </div>
+  </section>
 
   <!-- VIDEOS -->
-  <div id="videos" class="section">
+
+  <section id="videos" class="section">
     <h2>VIDEOS</h2>
 
     <div class="video-row">
-      <iframe src="https://www.youtube.com/embed/wq3L7IpXT9k" allowfullscreen></iframe>
-     <iframe 
-src="https://www.youtube.com/embed/e7Hvh6nk74A?autoplay=1&mute=1&loop=1&playlist=e7Hvh6nk74A"
-allow="autoplay"
-allowfullscreen>
-</iframe>
-      <iframe src="https://www.youtube.com/embed/5X1O62l7WdI" allowfullscreen></iframe>
-      <iframe 
-src="https://www.youtube.com/embed/loTfeBmqd8Q?autoplay=1&mute=1&loop=1&playlist=loTfeBmqd8Q"
-allow="autoplay"
-allowfullscreen>
-</iframe>
-      <iframe src="https://www.youtube.com/embed/N05yoK4NVsM" allowfullscreen></iframe>
+
+      <iframe
+        src="https://www.youtube.com/embed/wq3L7IpXT9k"
+        title="RollAndShow video 1"
+        loading="lazy"
+        allowfullscreen
+      ></iframe>
+
+      <iframe
+        src="https://www.youtube.com/embed/e7Hvh6nk74A?autoplay=1&mute=1&loop=1&playlist=e7Hvh6nk74A"
+        title="RollAndShow video 2"
+        loading="lazy"
+        allow="autoplay; encrypted-media"
+        allowfullscreen
+      ></iframe>
+
+      <iframe
+        src="https://www.youtube.com/embed/5X1O62l7WdI"
+        title="RollAndShow video 3"
+        loading="lazy"
+        allowfullscreen
+      ></iframe>
+
+      <iframe
+        src="https://www.youtube.com/embed/loTfeBmqd8Q?autoplay=1&mute=1&loop=1&playlist=loTfeBmqd8Q"
+        title="RollAndShow video 4"
+        loading="lazy"
+        allow="autoplay; encrypted-media"
+        allowfullscreen
+      ></iframe>
+
+      <iframe
+        src="https://www.youtube.com/embed/N05yoK4NVsM"
+        title="RollAndShow video 5"
+        loading="lazy"
+        allowfullscreen
+      ></iframe>
+
     </div>
-  </div>
-   <!-- JOURNEY -->
+  </section>
+
+  <!-- REDES SOCIALES -->
+
+  <section id="links" class="section">
+    <h2>CONNECT</h2>
+
+    <div class="social-links">
+      <a
+        href="https://youtube.com/@rollandshow"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        YouTube
+      </a>
+
+      <a
+        href="https://www.tiktok.com/@rollandsh0w"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        TikTok
+      </a>
+    </div>
+  </section>
+
+  <!-- JOURNEY -->
+
+  <section id="journey" class="section">
+    <h2>JOURNEY</h2>
+
+    <div class="journey-wrap">
+
+      <article class="journey-card">
+        <div class="journey-icon">🚗</div>
+        <h3>On the Road</h3>
+        <p>
+          Real driving experiences, road trips and life behind the wheel.
+        </p>
+      </article>
+
+      <article class="journey-card">
+        <div class="journey-icon">🎥</div>
+        <h3>IRL Streams</h3>
+        <p>
+          Live adventures, cities, events and moments captured in real time.
+        </p>
+      </article>
+
+      <article class="journey-card">
+        <div class="journey-icon">🌎</div>
+        <h3>WalkingShelter</h3>
+        <p>
+          Exploring new places and sharing every step of the journey.
+        </p>
+      </article>
+
+    </div>
+  </section>
+
+  <script>
+    const menuButton = document.getElementById("menuButton");
+    const menuLinks = document.getElementById("menuLinks");
+    const navigationLinks = menuLinks.querySelectorAll("a");
+
+    function closeMenu() {
+      menuLinks.classList.remove("open");
+      menuButton.classList.remove("active");
+      menuButton.setAttribute("aria-expanded", "false");
+    }
+
+    menuButton.addEventListener("click", function () {
+      const menuIsOpen = menuLinks.classList.toggle("open");
+
+      menuButton.classList.toggle("active", menuIsOpen);
+      menuButton.setAttribute(
+        "aria-expanded",
+        menuIsOpen ? "true" : "false"
+      );
+    });
+
+    navigationLinks.forEach(function (link) {
+      link.addEventListener("click", closeMenu);
+    });
+
+    window.addEventListener("resize", function () {
+      if (window.innerWidth > 768) {
+        closeMenu();
+      }
+    });
+  </script>
 
 </body>
 </html>
