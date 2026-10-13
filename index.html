@@ -417,21 +417,18 @@
   background-repeat: no-repeat;
   background-attachment: scroll;
 }
-/* Fondo móvil para toda la página */
 body::before {
 content: "";
 position: fixed;
-inset: 0;
-background-image:
-linear-gradient(
-rgba(0, 0, 0, 0.20),
-rgba(0, 0, 0, 0.35)
-),
-url("banner-mobile-v2.png");
-background-size: cover;
-background-position: center center;
-background-repeat: no-repeat;
+top: 0;
+left: 0;
+width: 100%;
+height: 100dvh;
+background:
+linear-gradient(rgba(0,0,0,0.20), rgba(0,0,0,0.40)),
+url("banner-mobile-final.png") center center / cover no-repeat;
 z-index: -1;
+pointer-events: none;
 }
 
 body {
