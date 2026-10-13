@@ -415,9 +415,29 @@
   background-size: cover;
   background-position: center top;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-attachment: scroll;
+}
+/* Fondo móvil para toda la página */
+body::before {
+content: "";
+position: fixed;
+inset: 0;
+background-image:
+linear-gradient(
+rgba(0, 0, 0, 0.20),
+rgba(0, 0, 0, 0.35)
+),
+url("banner-mobile-v2.png");
+background-size: cover;
+background-position: center center;
+background-repeat: no-repeat;
+z-index: -1;
 }
 
+body {
+background-image: none;
+background-color: transparent;
+}
 
       .menu {
         min-height: 68px;
